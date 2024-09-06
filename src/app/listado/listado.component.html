@@ -1,0 +1,46 @@
+<p>listado works!</p>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h1>Archivos</h1>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Acciones
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Nuevo</a></li>
+                <li><a class="dropdown-item" href="#">Borrar</a></li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Dueños</th>
+                </tr>
+            </thead>
+            <tbody id="lista">
+                @for (item of fileList; track $index) {
+                    @if (item.type == fileTypes.FOLDER || item.name == 'aquatic' || item.name == 'ey brother' || item.name == 'file 1') {
+                        <tr>
+                            <td> <input type="checkbox"> </td>
+                            <td> <a href="" style="text-decoration: none;">{{ item.name }}</a> </td>
+                            <td> {{ item.creation | date:'MMM d, y'}} </td>
+    
+                            <td> @for (foto of item.owners; track $index) {
+                                <img [ngStyle]="{ 'background-image': 'url(' + foto.avatarUrl + ')' }" style="width: 50px; height: 50px; background-size: cover; background-position: center; border-radius: 30px;">
+                            } 
+                            </td>
+    
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
