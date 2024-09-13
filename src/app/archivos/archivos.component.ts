@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FILE_LIST } from '../../data/file.storage';
 import { CommonModule } from '@angular/common';
-import { FileType } from '../../models/file.item.model';
+import { FileItem, FileType } from '../../models/file.item.model';
 import { FormComponent } from "../form/form.component";
 
 @Component({
@@ -11,18 +11,31 @@ import { FormComponent } from "../form/form.component";
   templateUrl: './archivos.component.html',
   styleUrl: './archivos.component.css'
 })
-export class ArchivosComponent {
+export class ArchivosComponent implements OnInit{
   fileList = FILE_LIST;
   fileTypes = FileType;
   texto: string = "Acciones";
   idPariente?: string;
+  listaNueva: FileItem[] = [];
 
   @Input() recibido?: string;
+  idNuevo?: string;
 
-  constructor() {
-    console.log('recibido: ' + this.recibido)
+  ngOnInit() {
+    this.idNuevo = this.recibido;
+    console.log(this.idNuevo);
+    this.archivosDeCarpeta();
   }
 
+  archivosDeCarpeta() {
+    this.listaNueva = [];
+    for (let i = 0; i < this.fileList.length; i++) {
+      if (this.fileList[i].parentId == this.idNuevo) {
+        this.listaNueva.push(this.fileList[i])
+      }
+    }
+    console.log(this.listaNueva)
+  }
 
 
 }

@@ -13,7 +13,7 @@
             </div>
           </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3" id="lista" *ngIf="!archivosEnCarpeta">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -23,7 +23,7 @@
                     <th scope="col">Dueños</th>
                 </tr>
             </thead>
-            <tbody id="lista" *ngIf="!archivosEnCarpeta">
+            <tbody>
                 @for (item of fileList; track $index) {
                     @if (item.type == fileTypes.FOLDER || item.name == 'aquatic' || item.name == 'ey brother' || item.name == 'file 1') {
                         <tr>
@@ -40,7 +40,7 @@
                     }
                 }
             </tbody>
-            <app-archivos *ngIf="archivosEnCarpeta" [recibido]="idMandado"></app-archivos>
         </table>
     </div>
+    <app-archivos *ngIf="archivosEnCarpeta" [recibido]="idMandado"></app-archivos>
 </div>
