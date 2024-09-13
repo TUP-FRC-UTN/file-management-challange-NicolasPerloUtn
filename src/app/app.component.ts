@@ -16,8 +16,14 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   files: FileItem[] = FILE_LIST;
   title = 'file-management';
+  recibido?: FileItem;
 
   probar = false;
+
+  llega(event : FileItem) {
+    this.recibido = event;
+    this.probar = false;
+  }
 
   mostrar() {
     this.probar = true;

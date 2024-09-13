@@ -15,6 +15,7 @@ export class FormComponent {
   carpetas = FILE_LIST;
   fileTypes = FileType;
   owners = OWNERS;
+  datos = "";
 
   @Output() onSave = new EventEmitter<FileItem>();
 

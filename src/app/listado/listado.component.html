@@ -28,11 +28,11 @@
                     @if (item.type == fileTypes.FOLDER || item.name == 'aquatic' || item.name == 'ey brother' || item.name == 'file 1') {
                         <tr>
                             <td> <input type="checkbox"> </td>
-                            <td> <a href="" style="text-decoration: none;" (click)="verArchivos($event, item)">{{ item.name }}</a> </td>
-                            <td> {{ item.creation | date:'MMM d, y'}} </td>
+                            <td> <a href="" style="text-decoration: none; color: black;" (click)="verArchivos($event, item)">{{ item?.name }}</a> </td>
+                            <td> {{ item?.creation | date:'MMM d, y'}} </td>
     
                             <td style="height: 67px;"> @for (foto of item.owners; track $index) {
-                                <img [ngStyle]="{ 'background-image': 'url(' + foto.avatarUrl + ')' }" style="width: 50px; height: 50px; background-size: cover; background-position: center; border-radius: 30px;">
+                                <img [ngStyle]="{ 'background-image': 'url(' + foto?.avatarUrl + ')' }" style="width: 50px; height: 50px; background-size: cover; background-position: center; border-radius: 30px;">
                             } 
                             </td>
     

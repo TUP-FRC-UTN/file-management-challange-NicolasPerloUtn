@@ -1,2 +1,2 @@
-<app-listado (selected)="mostrar()" *ngIf="!probar"></app-listado>
-<app-form *ngIf="probar"></app-form>
+<app-listado (selected)="mostrar()" *ngIf="!probar" [datos]="recibido"></app-listado>
+<app-form *ngIf="probar" (onSave)="llega($event)"></app-form>
