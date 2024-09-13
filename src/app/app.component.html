@@ -1,1 +1,2 @@
-<app-listado></app-listado>
+<app-listado (selected)="mostrar()" *ngIf="!probar"></app-listado>
+<app-form *ngIf="probar"></app-form>

@@ -1,0 +1,17 @@
+<tbody id="lista">
+    @for (item of fileList; track $index) {
+        @if (item.parentId == idPariente) {
+            <tr>
+                <td> <input type="checkbox"> </td>
+                <td> <a href="" style="text-decoration: none;">{{ item.name }}</a> </td>
+                <td> {{ item.creation | date:'MMM d, y'}} </td>
+
+                <td style="height: 67px;"> @for (foto of item.owners; track $index) {
+                    <img [ngStyle]="{ 'background-image': 'url(' + foto.avatarUrl + ')' }" style="width: 50px; height: 50px; background-size: cover; background-position: center; border-radius: 30px;">
+                } 
+                </td>
+
+            </tr>
+        }
+    }
+</tbody>

@@ -1,0 +1,42 @@
+<form #form="ngForm" (ngSubmit)="save(form)">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input name="nombre" type="text" class="form-control" id="nombre" placeholder="" required #nombre="ngModel" [(ngModel)]="archivo.name">
+        @if (nombre.invalid) {
+            <span>Debe ingresar el campo nombre</span>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input name="fecha" type="date" class="form-control" id="fecha" placeholder="" required #fecha="ngModel" [(ngModel)]="archivo.creation">
+        @if (fecha.invalid) {
+            <span>Debe ingresar la fecha</span>
+        }
+    </div>
+    <div class="mb-3">
+        <label for="tipoArchivo" class="form-label">Tipo Archivo</label>
+        <select name="tipoArchivo" id="tipoArchivo" [(ngModel)]="archivo.type">
+            <option>FOLDER</option>
+            <option>FILE</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="carpeta" class="form-label">Carpeta</label>
+        <select name="carpeta" id="carpeta" [(ngModel)]="archivo.parentId">
+            @for (item of carpetas; track $index) {
+                @if (item.type == fileTypes.FOLDER) {
+                    <option>{{ item.name }}</option>
+                } 
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="owners" class="form-label">Dueños</label>
+        <select name="owners" id="owners" [(ngModel)]="archivo.owners">
+            @for (item of owners; track $index) {
+                <option>{{ item.name }}</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit" >Guardar</button> <!-- [disabled]="form.invalid" para deshabilitar el boton -->
+</form>
